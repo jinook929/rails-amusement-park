@@ -1,0 +1,18 @@
+<h1>User Info</h1>
+
+<h3><%= 'Logged in successfully!' if logged_in? %> <%= '[ as ADMIN ]' if current_user.admin %></h3>
+
+<% if flash[:alert] %>
+  <h3><%= flash[:alert] %></h3>
+<% end %>
+
+<p>User Name: <%= @user.name %></p>
+<p>Mood: <%= @user.mood %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Height: <%= @user.height %></p>
+
+<h3>User ID = <%= current_user.id if current_user %></h3>
+<h3>Session user_id = <%= session[:user_id] %></h3>
+
+<%= button_to "Log Out", signout_path %>
+<%= link_to "Back to Home", root_path %>

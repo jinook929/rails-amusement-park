@@ -1,0 +1,44 @@
+<h1>Our Attractions</h1>
+
+<% if @alert %>
+  <h3><%= @alert %></h3>
+<% end %>
+
+<% if current_user.admin %>
+<%= link_to "New Attraction", new_attraction_path %>
+<h3>Add New Attraction</h3>
+  <%= form_for(@attraction) do |f| %>
+  <div>
+    <%= f.label :name, class: "form-label" %>
+    <%= f.text_field :name, class: "form-control", class: "form-control" %>
+  </div>
+  <div>
+    <%= f.label :happiness_rating, class: "form-label" %>
+    <%= f.number_field :happiness_rating, class: "form-control" %>
+  </div>
+  <div>
+    <%= f.label :nausea_rating, class: "form-label" %>
+    <%= f.number_field :nausea_rating, class: "form-control" %>
+  </div>
+  <div>
+    <%= f.label :tickets, class: "form-label" %>
+    <%= f.number_field :tickets, class: "form-control" %>
+  </div>
+  <div>
+    <%= f.label :min_height, class: "form-label" %>
+    <%= f.number_field :min_height, class: "form-control" %>
+  </div>
+  <div>
+    <%= f.submit "New Attraction" %>
+  </div>
+  <% end %>
+<% end %>
+
+<% @attractions.each do |attraction| %>
+  <p>
+    <% if !current_user.admin %>
+      <%= link_to "Go on #{attraction.name}", attraction %> 
+    <% end %>
+    (<%= link_to "Show #{attraction.name}", attraction %>)
+  </p>
+<% end %>

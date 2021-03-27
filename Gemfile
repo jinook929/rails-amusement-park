@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1'
+gem 'rails', '~> 5.2'
 gem 'bootsnap'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', '~>1.3.6'
@@ -22,8 +22,10 @@ gem 'uglifier', '>= 1.3.0'
 
 
 # bootstrap
-
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '~> 3.3.7'
+gem 'bootstrap', '~> 5.0.0.beta2'
+gem 'sprockets-rails', '~> 2.3.2'
+gem 'jquery-rails'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
@@ -35,7 +37,9 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-
+gem 'omniauth'
+gem "omniauth-rails_csrf_protection"
+gem 'omniauth-google-oauth2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -49,6 +53,7 @@ group :development, :test do
   gem "database_cleaner"
   gem "rspec-rails"
   gem "rack_session_access"
+  gem 'pry'
 end
 
 group :development do

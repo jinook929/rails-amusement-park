@@ -1,0 +1,19 @@
+<h1>Sign in</h1>
+
+<%= form_for User.new, url: signin_path do |f| %>
+  <div>
+    <%= f.label :name, class: "form-label" %>
+    <%= f.collection_select :name, User.all, :name, :name, {prompt: "Select Name"}, {class: "form-control"} %>
+  </div>
+  <div>
+    <%= f.label :password, class: "form-label" %>
+    <div class="<%= 'field_with_errors' if @password_error %>">
+      <%= f.password_field :password, id: "password", class: "form-control", placeholder: @password_error %>
+    </div>
+  </div>
+  <p>
+    <%= f.submit 'Sign In', class: "btn btn-primary" %>
+  </p>
+<% end %>
+
+<%= link_to "Back to Home", root_path, class: "btn btn-link" %>

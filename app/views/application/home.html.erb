@@ -1,0 +1,12 @@
+<h1>Welcome to the Park!</h1>
+
+<%= link_to "Sign in", signin_path, class: "btn btn-info" %>
+<%= link_to "Sign in with Google", '/auth/google_oauth2', method: :post, class: "btn btn-primary" %>
+
+<% if logged_in? %>
+  <p>
+    <%= "Status: User ID##{current_user.id} Logged In" %> 
+    <%= "[ You are ADMIN ] " if current_user.admin %>
+    (<%= link_to "User Page", user_path(current_user) %>)
+  </p>
+<% end %>

@@ -1,0 +1,22 @@
+<h1><%= @attraction.name %></h1>
+
+<% if flash[:alert] %>
+  <h3><%= flash[:alert] %></h3>
+<% end %>
+
+<% if current_user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %>
+<% end %>
+
+<p>Happiness Rating: <%= @attraction.happiness_rating %></p>
+<p>Nausea Rating: <%= @attraction.nausea_rating %></p>
+<p>Tickets: <%= @attraction.tickets %></p>
+<p>Minimum Height: <%= @attraction.min_height %></p>
+
+<% if !current_user.admin %>
+  <%= form_for @ride, url: attraction_rides_path(@attraction), method: :post do |f| %>
+    <%= f.submit "Go on this ride" %>
+  <% end %>
+<% end %>
+
+<p><%= link_to "Back to List", attractions_path, class: "btn btn-success" %></p>
